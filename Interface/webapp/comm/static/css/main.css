@@ -1,0 +1,234 @@
+@media screen and (min-width:768px) and (max-width: 992px)  {
+
+    .logout-name {
+        display: none;
+    }
+}
+
+.glyphicon:hover {
+    text-decoration: none;
+}
+
+.btn-small{
+    padding: 3px 3px 3px 3px;
+    background-color: #e74c3c;
+    border-color: #e74c3c;
+    border-radius: 6px;
+    text-decoration: none;
+    border:none !important;
+    box-shadow:none !important;
+
+}
+
+.blacklink{
+    color: #333;
+}
+.whitelink{
+
+    color: #FFF;
+}
+.whitelink:active{
+    color: #FFF;
+ }
+.whitelink:focus{
+    color: #FFF;
+ }
+
+.whitelink:hover{
+    color: #18bc9c;
+}
+
+
+@media screen and (min-width: 775px)  {
+
+    .modal.modal-wide .modal-dialog {
+        width: 90%;
+        max-width:1000px;
+    }
+}
+
+.validation-content td {
+    min-width: 20px;
+}
+
+.validation-content td {
+    vertical-align: top;
+}
+
+.ajax-list-toggle{
+    cursor: pointer;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+body {
+    padding-bottom: 20px;
+}
+
+#edit-time-entry-modal .popover {
+    width: 230px;
+}
+
+.edit-modal-body {
+    padding-bottom: -10px;
+}
+.nowrap {
+    display: inline-block;
+    white-space: nowrap;
+}
+.small-text {
+    font-size: 10px;
+}
+.time-sheet-submit {
+    display: inline-block;
+}
+.time-sheet-submit input[type="submit"] {
+    background: transparent;
+    border: medium none;
+    display: inline-block;
+    color: white;
+}
+
+a.glyphicon {
+    color: white;
+    cursor: pointer;
+}
+
+span.glyphicon {
+    cursor: pointer;
+}
+
+a.glyphicon.black-glyphicon {
+    color: black;
+}
+
+#password_wdh {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: -1px;
+    margin-bottom: 10px;
+}
+
+#change-password {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -1px;
+}
+
+.form-forgot p {
+    font-size: 10px;
+}
+
+.form-forgot input[type="email"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 10px;
+}
+
+
+.cut {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.list-hr-padding {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.panel {
+    margin-top: 2px;
+    margin-bottom: 2px;
+
+}
+
+.ajax-not-loaded.list-hr-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.ajax-hidden.list-hr-padding {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.panel .noborder {
+    border: none;
+}
+.btn-group {
+    margin-bottom: 8px;
+}
+.ajax-hidden {
+    display: none;
+}
+.alert-collection {
+    margin-bottom: 20px;
+}
+.righti {
+    float: right;
+    padding-right: 10px;
+}
+.alert-collection-item {
+    margin-bottom: 5px;
+}
+
+.tracker-begin-span {
+    float: right;
+}
+.tracker-begin-span strong {
+    padding-right: 5px;
+}
+.row {
+    margin-right: 0;
+    margin-left: 0;
+}
+textarea {
+    resize: none;
+}
+.home-padding * {
+    margin-bottom: 2px;
+}
+.time-entry-input .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+    padding-right: 2px;
+    padding-left: 2px;
+}
+
+.form-auth {
+    margin: 0 auto;
+    max-width: 330px;
+    padding: 15px;
+}
+.form-auth .form-auth-heading {
+    margin-bottom: 10px;
+}
+
+.form-auth .form-control {
+    box-sizing: border-box;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    position: relative;
+}
+.form-control:focus {
+    z-index: 2;
+}
+.form-signin input[type="email"] {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: -1px;
+}
+.form-signin input[type="password"] {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    margin-bottom: 10px;
+}
+
+.scrollable-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.panel-primary .panel-heading .popover-title {
+    color: black;
+}

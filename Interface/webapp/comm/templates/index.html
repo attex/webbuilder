@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+          <title>Interface</title>
+          <meta name="viewport" content="width=450">
+          <!-- Bootstrap core CSS-->
+          <link href="../static/bs/css/bootstrap.min.css" rel="stylesheet">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Web-App</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+          <div class="row content">
+            <div class="SystemContainer col-sm-6">
+                <h3>Create new container</h3>
+                <form enctype="multipart/form-data" action="/index/" method="post">
+                  {% csrf_token %}
+                  <p>Geben Sie den Namen des Moduls ein</p>
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="inputGroupName01" for="inputGroupName01" name="inputGroupName01" placeholder="Modulename" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+                  <p>Geben Sie für das ESP8266 bitte den Pfad zum Makefile an. Beim RaspberryPi3 oder dem XiaomiSRDJ00RR geben Sie den Pfad zur build.sh an.</p>
+                  <div class="input-group mb-3">
+                      <input type="text" class="form-control" id="inputGroupFile01" for="inputGroupFile01" name="inputGroupFile01" placeholder="Path to programm directory" aria-label="Username" aria-describedby="basic-addon1">
+                  </div>
+              <!--    <div class="form-group">
+                    <label for="sel2">Select components:</label>
+                    {% for comp in components %}
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text">
+                            <input id="Prometheus"  name="Prometheus" type="checkbox" aria-label="Checkbox for following text input">
+                          </div>
+                        </div>
+                        <input id="Database" name="Database" type="text" disabled class="form-control" aria-label="Text input with checkbox" value={{ comp }}>
+                      </div>
+                      {% endfor %}
+                  </div> -->
+
+                  <div class="input-group mb-3">
+                  <div class="input-group-prepend">
+                    <label class="input-group-text" >Selecte device</label>
+                  </div>
+                  <select class="custom-select" for="inputGroupSelect01" name="inputGroupSelect01" id="inputGroupSelect01">
+                    {% for dev in devices %}
+                    <option value="{{ dev.id }}">Device: {{ dev.deviceid }} Platform: {{ dev.platform }}</option>
+                    {% endfor %}
+                  </select>
+
+
+                </div>
+              <button type="submit" class="btn btn-block btn-success">Create</button>
+            </div>
+            </form>
+<div class="DockerContainer col-sm-6">
+  <h3>Container overview</h3>
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Modulename</th>
+      <th scope="col">Platform</th>
+      <th scope="col">Device id</th>
+      <th scope="col">Path</th>
+      <th scope="col">Status</th>
+      <th scope="col">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+   {% for cont in modules %}
+    <tr>
+      <th scope="row">{{ cont.name }}</th>
+      <td>{{ cont.platfom }}</td>
+      <td>{{ cont.systemID }}</td>
+      <td>{{ cont.file }}</td>
+      <td><span class="label label-default">{{ cont.status }}</span></td>
+      <td>
+        <a href="run/{{ cont.mid }}"  ><button type="button"  class="runContainer btn btn-success"><div class="glyphicon glyphicon-play"></div></button></a>
+        <a href="delete/{{ cont.mid }}"  ><button type="button" class="runContainer btn btn-danger"><div class="glyphicon glyphicon-trash"></div></button></a>
+        <a href="monitor/{{ cont.mid }}"><button type="button" class="runContainer btn btn-info"><div class="glyphicon glyphicon-dashboard"></div></button></a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+    </div>
+</div>
+</div>
+
+
+
+
+    </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <title>Interface</title>
+          <meta name="viewport" content="width=450">
+          <!-- Bootstrap core CSS -->
+          <link href="../../static/bs/css/bootstrap.min.css" rel="stylesheet">
+          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+      <nav class="navbar navbar-default">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <a class="navbar-brand" href="#">Web-App</a>
+            <a class="navbar-brand" href="/">BACK</a>
+
+          </div>
+        </div>
+      </nav>
+
+      <div class="container-fluid">
+        <div class="row content">
+          <div class="SystemContainer col-sm-6">
+            <h3>Container {{ name }}</h3>
+            <table class="table table-striped"
+              <tbody>
+             {% for i in infos %}
+                <tr>
+                  <th scope="row">{{ i.key }}</th>
+                  <td>{{ i.value }}</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        <div class="DockerContainer col-sm-6">
+          <h3>Container output</h3>
+
+          <script>
+
+   if ("WebSocket" in window) {
+      //alert("WebSocket is supported by your Browser!");
+
+      // Let us open a web socket
+      var ws = new WebSocket("ws://localhost:9998/echo");
+      messages = document.createElement('ul');
+      messages.setAttribute("class","list-group");       // Create a "class" attribute
+      document.getElementsByClassName("DockerContainer")[0].appendChild(messages)
+      ws.onopen = function() {
+        ws.send("Initializing logging information");
+        ws.send("Starting daemon");
+        ws.send("Ready for output...");
+
+
+        {% for logs in log%}
+          ws.send(log);
+        {% endfor %}
+
+         //while(true);
+         //alert("Message is sent...");
+      };
+
+      ws.onmessage = function (evt) {
+         var received_msg = evt.data;
+         var d = new Date();
+         var time = "[" + getZero(d.getHours()) + ":" + getZero(d.getMinutes()) + ":" + getZero(d.getSeconds()) + "] ";
+         var messages = document.getElementsByTagName('ul')[0],
+             message = document.createElement('li'),
+             content = document.createTextNode(time + event.data);
+         message.setAttribute("class","list-group-item");
+         message.appendChild(content);
+         messages.appendChild(message);
+
+         //alert("Message is received...");
+      };
+
+
+      ws.onclose = function() {
+         // websocket is closed.
+         alert("Connection is closed...");
+      };
+   } else {
+      // The browser doesn't support WebSocket
+      alert("WebSocket NOT supported by your Browser!");
+   }
+
+   function getZero(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
+
+/*            var ws = new WebSocket("ws://127.0.0.1:8000/monitor/{{idd}}"),
+                messages = document.createElement('ul');
+            ws.onmessage = function (event) {
+                var messages = document.getElementsByTagName('ul')[0],
+                    message = document.createElement('li'),
+                    content = document.createTextNode(event.data);
+                message.appendChild(content);
+                messages.appendChild(message);
+            };
+            document.body.appendChild(messages);
+
+
+            ws.send("Here's some text that the server is urgently awaiting!");
+            ws.send("Here's some text that the server is urgently awaiting!");
+            ws.send("Here's some text that the server is urgently awaiting!");
+            ws.send("Here's some text that the server is urgently awaiting!");
+*/
+        </script>
+        </div>
+      </div>
+    </div>
+    </body>
+</html>
