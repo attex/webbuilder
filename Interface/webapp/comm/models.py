@@ -16,3 +16,9 @@ class Module(models.Model):
     filepath = models.CharField(max_length=200)
     deviceid = models.ForeignKey(Device, on_delete=models.CASCADE)
     status = models.CharField(max_length=200)
+
+class Log(models.Model):
+    timestamp = models.DateTimeField(auto_now_add=True)
+    message = models.CharField(max_length=300)
+    state = models.CharField(max_length=200)
+    

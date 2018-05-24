@@ -11,18 +11,16 @@
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Web-App</a>
-          </div>
-        </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span style="position:absolute;font-size:15px;padding:1em;color:white">Webbuilder</span>
+
+
       </nav>
 
       <div class="container-fluid">
           <div class="row content">
             <div class="SystemContainer col-sm-6">
-                <h3>Create new container</h3>
+                <h3>Create new module</h3>
                 <form enctype="multipart/form-data" action="/index/" method="post">
                   {% csrf_token %}
                   <p>Geben Sie den Namen des Moduls ein</p>
@@ -63,7 +61,7 @@
             </div>
             </form>
 <div class="DockerContainer col-sm-6">
-  <h3>Container overview</h3>
+  <h3>Module overview</h3>
 <table class="table table-striped">
   <thead class="thead-dark">
     <tr>

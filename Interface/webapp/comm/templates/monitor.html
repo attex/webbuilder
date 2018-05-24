@@ -10,14 +10,10 @@
           <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-      <nav class="navbar navbar-default">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#">Web-App</a>
-            <a class="navbar-brand" href="/">BACK</a>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <span style="position:absolute;font-size:15px;padding:1em;color:white">Webbuilder</span>
+        <a style="color:#ddd;font-size:13px;position:absolute;left:120px" href="/">Back</a>
 
-          </div>
-        </div>
       </nav>
 
       <div class="container-fluid">
@@ -29,7 +25,7 @@
              {% for i in infos %}
                 <tr>
                   <th scope="row">{{ i.key }}</th>
-                  <td>{{ i.value }}</td>
+                  <td id="{{i.key}}" data="{{i.key}}">{{ i.value }}</td>
                 </tr>
               {% endfor %}
               </tbody>
@@ -44,20 +40,15 @@
       //alert("WebSocket is supported by your Browser!");
 
       // Let us open a web socket
-      var ws = new WebSocket("ws://localhost:9998/echo");
+      var ws = new WebSocket("ws://127.0.0.1:8002");
       messages = document.createElement('ul');
       messages.setAttribute("class","list-group");       // Create a "class" attribute
+      messages.setAttribute("style","height: 80vh;overflow:scroll");
       document.getElementsByClassName("DockerContainer")[0].appendChild(messages)
       ws.onopen = function() {
         ws.send("Initializing logging information");
         ws.send("Starting daemon");
         ws.send("Ready for output...");
-
-
-        {% for logs in log%}
-          ws.send(log);
-        {% endfor %}
-
          //while(true);
          //alert("Message is sent...");
       };
@@ -66,12 +57,20 @@
          var received_msg = evt.data;
          var d = new Date();
          var time = "[" + getZero(d.getHours()) + ":" + getZero(d.getMinutes()) + ":" + getZero(d.getSeconds()) + "] ";
-         var messages = document.getElementsByTagName('ul')[0],
-             message = document.createElement('li'),
-             content = document.createTextNode(time + event.data);
-         message.setAttribute("class","list-group-item");
-         message.appendChild(content);
-         messages.appendChild(message);
+         var device = document.getElementById("ID").textContent;
+         var Messagedevice = evt.data.substring(evt.data.indexOf("[") + 1, evt.data.lastIndexOf("]"));
+         console.log("[MESSAGE] MessagePlatform ",Messagedevice, " and ", device);
+
+         if (Messagedevice == device || !Messagedevice) {
+           var messages = document.getElementsByTagName('ul')[0],
+               message = document.createElement('li'),
+               content = document.createTextNode(time + event.data.substring(evt.data.indexOf("]")));
+           message.setAttribute("class","list-group-item");
+           message.setAttribute("style","background-color:#000;color:white");
+           message.appendChild(content);
+           messages.insertBefore(message, messages.children[0]);
+         }
+
 
          //alert("Message is received...");
       };

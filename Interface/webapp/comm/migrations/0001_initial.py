@@ -14,7 +14,7 @@ def init_db(apps, div):
     esp.save()
     esp1 = Device(id=2,deviceid="device-xia-001",platform="XiaomiSDJQR01RR",path="/dev/ttyUSB0:/dev/ttyUSB0")
     esp1.save()
-    esp1 = Device(id=3,deviceid="device-ras-001",platform="RaspberryPi3",path="192.168.178.38")
+    esp1 = Device(id=3,deviceid="device-ras-001",platform="RaspberryPi3",path="10.11.4.198")
     esp1.save()
 
 
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('moduleid', models.CharField(max_length=200)),
-                ('modulename', models.CharField(max_length=200)),                
+                ('modulename', models.CharField(max_length=200)),
                 ('containerid', models.CharField(max_length=200)),
                 ('containertag', models.CharField(max_length=200)),
                 ('filepath', models.CharField(max_length=200)),

@@ -31,8 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    #'kronos',
-    'monitor',
+    
     'comm.apps.CommConfig',
     #'comm',
     'django.contrib.admin',
@@ -43,10 +42,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
 ]
-PROJECT_APPS = (
-    'skwissh',
-)
-INSTALLED_APPS += PROJECT_APPS
 
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
@@ -59,14 +54,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-MIDDLEWARE_CLASSES = (
-    'django.middleware.common.CommonMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
-)
+
 ROOT_URLCONF = 'webapp.urls'
 
 TEMPLATES = [
@@ -97,7 +85,49 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
+#ELASTICSEARCH_DSL={
+#    'default': {
+#        'hosts': 'localhost:9200'
+#    },
+#}#
 
+#LOGGING = {
+#  'version': 1,
+#  'disable_existing_loggers': False,
+#  'formatters': {
+#      'simple': {
+#            'format': '%(levelname)s %(message)s'
+#        },
+#  },
+#  'handlers': {
+#        'console': {
+#            'level': 'INFO',
+#            'class': 'logging.StreamHandler',
+#            'formatter': 'simple'
+#        },
+#        'logstash': {
+#            'level': 'DEBUG',
+#            'class': 'logstash.TCPLogstashHandler',
+#            'host': 'localhost',
+#            'port': 5959, # Default value: 5959
+#            'version': 1, # Version of logstash event schema. Default value: 0 (for backward compatibility of the library)
+#            'message_type': 'django',  # 'type' field in logstash message. Default value: 'logstash'.
+#            'fqdn': False, # Fully qualified domain name. Default value: false.
+#            'tags': ['django.request'], # list of tags. Default: None.
+#        },
+ # },
+ # 'loggers': {
+#        'django.request': {
+#            'handlers': ['logstash'],
+#            'level': 'DEBUG',
+#            'propagate': True,
+#        },
+#        'django': {
+#            'handlers': ['console'],
+#            'propagate': True,
+#        },
+#    }
+#}
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators

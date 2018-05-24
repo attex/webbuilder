@@ -11,7 +11,5 @@ urlpatterns = [
     url(r'^monitor/(\w+)', views.monitor),
     url(r'^delete/(\w+)', views.delete_Module),
     url(r'^run/(\w+)', views.exec_Module),
-    url(r'^skwissh/', include('skwissh.urls')),
-    url(r'^monitor/', include('monitor.urls', namespace='monitor'))
 
 ]

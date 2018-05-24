@@ -11,7 +11,7 @@ ADD ./build_n_flash.sh /opt
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update -qq \
     && DEBIAN_FRONTEND=noninteractive apt-get install -yq \
-	     make unrar-free autoconf automake libtool gcc g++ gperf \
+	     mosquitto mosquitto-clients make unrar-free autoconf automake libtool gcc g++ gperf \
 	         flex bison texinfo gawk ncurses-dev libexpat-dev python-dev python python-serial \
 	         sed git unzip bash help2man wget bzip2 libtool-bin \
 	&& useradd -m -d /esp_master esp_master \
